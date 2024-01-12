@@ -4,12 +4,12 @@ import ViviendaForm from './ViviendaForm'
 
 function App() {
   return (
-    <Container maxWidth="lg" sx={{backgroundColor: 'red', minHeight:'100vh'}}>
+    <Container maxWidth="lg" sx={{backgroundColor: 'grey', minHeight:'100vh'}}>
         <Box  
           display="flex"
           justifyContent="center"
           alignItems="center"
-          sx={{ width: '100%', minHeight: '100vh', backgroundColor:'yellow' }}>
+          sx={{ width: '100%', minHeight: '100vh', backgroundColor:'' }}>
             <ViviendaForm/>
         </Box>
     </Container>
