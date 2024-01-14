@@ -1,34 +1,51 @@
 import React from 'react';
-import Sidebar from 'react-sidebar';
+import './SidebarStyle.css';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      sidebarOpen: false,
-    };
-    this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
-  }
+const Sidebar = () => {
+  return (
+    <div className="sidebar">
+      {/* Sección de perfil de usuario */}
+      <div className="logo">
+        <img src="" alt="Logo App" />
+      </div>
 
-  onSetSidebarOpen(open) {
-    this.setState({ sidebarOpen: open });
-  }
+      {/* Navegación */}
+      <div className="navigation">
+        {/* Enlace del dashboard */}
+        <div className="nav-link">
+          <span>Roommies</span>
+        </div>
 
-  render() {
-    return (
-      <Sidebar
-        sidebar={<div>Contenido del Sidebar</div>}
-        open={this.state.sidebarOpen}
-        onSetOpen={this.onSetSidebarOpen}
-        styles={{ sidebar: { background: 'white' } }}
-      >
-        <button onClick={() => this.onSetSidebarOpen(true)}>
-          Abrir Sidebar
-        </button>
-        <div>Contenido Principal</div>
-      </Sidebar>
-    );
-  }
-}
+        {/* Otros enlaces de navegación */}
+        <div className="nav-link">
+          <span>Perfil</span>
+        </div>
+        <div className="nav-link">
+          <span>Vivienda</span>
+        </div>
+        <div className="nav-link">
+          <span>Habitacion</span>
+        </div>
+      </div>
 
-export default App;
+      {/* Sección de notificaciones */}
+      <div className="notifications">
+        <button>View Notifications</button>
+      </div>
+
+      {/* Sección de configuraciones */}
+      <div className="settings">
+        <button>Settings</button>
+      </div>
+      <div className="user-info">
+          <h3> Nombre de USuario </h3>
+      </div>
+      
+      <div className="logout">
+        <button>Log Out</button>
+      </div>
+    </div>
+  );
+};
+
+export default Sidebar;

@@ -1,17 +1,14 @@
-import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import ViviendaForm from './ViviendaForm'
+import Sidebar from 'react-sidebar';
 
 function App() {
   return (
-    <Container maxWidth="lg" sx={{backgroundColor: 'grey', minHeight:'100vh'}}>
-        <Box  
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          sx={{ width: '100%', minHeight: '100vh', backgroundColor:'' }}>
-            <ViviendaForm/>
-        </Box>
+    <Container maxWidth="150" sx={{backgroundColor: 'grey', minHeight:'100'}}>      
+          <Sidebar/>
+        <div className='main-content'>
+          <ViviendaForm/>
+        </div>
     </Container>
   );
 }
