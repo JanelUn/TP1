@@ -1,109 +1,136 @@
-import React, { useState } from 'react';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Switch from '@mui/material/Switch';
-import Slider from '@mui/material/Slider';
-import Sidebar from './Sidebar';
-import './ViviendaStyle.css'
+import React from 'react';
+import { Button } from '@mui/material';
+import { Container, FormControl, InputLabel, Select, MenuItem, FormHelperText, Box, Slider, FormControlLabel, Switch, Typography } from '@mui/material';
 
-const ViviendaForm = () => {
- const [distrito, setDistrito] = useState("");
- const [habitaciones, setHabitaciones] = useState("");
- const [banos, setBanos] = useState("");
- const [estacionamiento, setEstacionamiento] = useState(false);
- const [presupuesto, setPresupuesto] = useState([700, 4000]);
+const FormularioTitulo = () => {
+  return (
+    <Box textAlign="center" mb={3}>
+      <Typography variant="h4" component="h1" gutterBottom>
+        Vivienda
+      </Typography>
+    </Box>
+  );
+};
 
+const Formulario = () => {
+  const [distrito, setDistrito] =React.useState('');
+  const [habitacion, setHabitacion]=React.useState('');
+  const [banos, setBanos]=React.useState('');
+  const [estacionamiento, setEstacionamiento] = React.useState(false);
+  const [presupuesto, setPresupuesto]= React.useState();
 
-
- const handleSubmit = (event) => {
-   event.preventDefault();
-   // Aquí puedes manejar la lógica de envío del formulario
-   console.log(`Distrito: ${distrito}, Habitaciones: ${habitaciones}, Estacionamiento: ${estacionamiento ? 'Sí' : 'No'}, Presupuesto: ${presupuesto[0]} - ${presupuesto[1]}`);
-  };  
-  const handleSliderChange = (event, newValue) => {
-    setPresupuesto(newValue);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Aquí puedes agregar la lógica para manejar el envío del formulario
   };
- return (
-  
-  <Box>
-    <div id="app-container">
-        <div id="sidebar-container">
-          <Sidebar/>
-        </div>
-        <div id="form-container">    
-            <form className="vivienda-form" onSubmit={handleSubmit}>
-            <Typography variant="h3" gutterBottom>Distrito:</Typography>
-              <Select 
-                required
-                fullWidth
-                id="distrito"
-                label="Distrito"
-                variant="outlined"
-                value={distrito}
-                onChange={(e) => setDistrito(e.target.value)}
-              >
-                  <MenuItem value="Breña">Breña</MenuItem>
-                  <MenuItem value="Cercado">Cercado</MenuItem>
-                  <MenuItem value="Barranco">Barranco</MenuItem>
-                  <MenuItem value="San Luis">San Luis</MenuItem>
-                  <MenuItem value="La Victoria">La Victoria</MenuItem>
-                  <MenuItem value="Rimac">Rimac</MenuItem>
-                  <MenuItem value="Lince">Breña</MenuItem>
-                </Select>
-            <Typography variant="h3" gutterBottom>Habitaciones:</Typography>
-                <Select
-                  required
-                  fullWidth
-                  id="habitaciones"
-                  label="Habitaciones"
-                  variant='outlined'
-                  value={habitaciones}
-                  onChange={(e)=> setHabitaciones(e.target.value)}
-                >
-                  <MenuItem value="1 habitacion"> 1 habitacion</MenuItem>
-                  <MenuItem value="2 habitaciones"> 2 habitacion</MenuItem>
-                  <MenuItem value="3 habitaciones"> 3 habitacion</MenuItem>
-                  
-                </Select>
 
-            <Typography variant="h3" gutterBottom>Baños:</Typography>
-                <Select
-                  required
-                  fullWidth
-                  id="banos"
-                  label="Banos"
-                  variant='outlined'
-                  value={banos}
-                  onChange={(e)=> setBanos(e.target.value)}
-                >
-                  <MenuItem value="1 banos"> 1 baño</MenuItem>
-                  <MenuItem value="2-3 banos"> 2-3 baños</MenuItem>
-                  
-                </Select>
-            <Typography variant="h3" gutterBottom>¿Cuenta con estacionamiento?:</Typography>
-            <FormControlLabel control={<Switch checked={estacionamiento} onChange={(e) => setEstacionamiento(e.target.checked)} />} />
+  return (
+    <Box>
+    
+    <Container maxWidth="md" style={{background: 'white'}}>
+    <FormularioTitulo/>
+    <form onSubmit={handleSubmit}>
+      <FormControl fullWidth margin='normal'>
+        <InputLabel id="distrito-label">Distrito</InputLabel>
+        <Select
+          labelId="distrito-label"
+          id="distrito"
+          value={distrito}
+          label="Distrito"
+          onChange={(e)=> setDistrito(e.target.value)}
+          >
+          <MenuItem value="Distrito1">Barranco</MenuItem>
+          <MenuItem value="Distrito2">Callao</MenuItem>
+          <MenuItem value="Distrito3">Chorrillos</MenuItem>
+          <MenuItem value="Distrito4">Jesus Maria</MenuItem>
+          <MenuItem value="Distrito5">La Molina</MenuItem>
+          <MenuItem value="Distrito6">La Victoria</MenuItem>
+          <MenuItem value="Distrito7">Lince</MenuItem>
+          <MenuItem value="Distrito8">Magdalena del Mar</MenuItem>
+          <MenuItem value="Distrito9">Miraflores</MenuItem>
+          <MenuItem value="Distrito10">Pueblo Libre</MenuItem>
+          <MenuItem value="Distrito11">Rimac</MenuItem>
+          <MenuItem value="Distrito12">San Borja</MenuItem>
+          <MenuItem value="Distrito13">San Isidro</MenuItem>
+          <MenuItem value="Distrito14">San Miguel</MenuItem>
+          <MenuItem value="Distrito15">Surco</MenuItem>
+        </Select>
+        <FormHelperText>Seleccione el distrito que desea vivir</FormHelperText>
+      </FormControl>
 
-            <Typography variant="h3" gutterBottom>Presupuesto:</Typography>
-          <Slider
-            value={presupuesto}
-            onChange={handleSliderChange}
-            valueLabelDisplay="auto"
-            aria-labelledby="range-slider"
-            min={700}
-            max={4000 }
-            step={100}
+      <FormControl fullWidth margin='normal'>
+        <InputLabel id="habitacion-label">Habitaciones</InputLabel>
+        <Select
+          labelId="habitacion-label"
+          id="habitacion"
+          value={habitacion}
+          label="Habitacion"
+          onChange={(e)=> setHabitacion(e.target.value)}
+        >
+          <MenuItem value="Habitacion1">1 Habitacion</MenuItem>
+          <MenuItem value="Habitacion2">2 Habitaciones</MenuItem>
+          <MenuItem value="Habitacion3">3 Habitaciones</MenuItem>
+        </Select>
+        <FormHelperText>Seleccione la cantidad de Habitaciones</FormHelperText>
+      </FormControl>
+
+      <FormControl fullWidth margin="normal">
+        <InputLabel id="banos-label">Baños</InputLabel>
+        <Select
+          labelId="banos-label"
+          id="banos"
+          value={banos}
+          label="Banos"
+          onChange={(e) => setBanos(e.target.value)}
+        >
+          <MenuItem value="Bano1">1 Baño</MenuItem>
+          <MenuItem value="Bano2">2 Baños</MenuItem>
+          <MenuItem value="Bano3">3 Baños</MenuItem>
+        </Select>
+        <FormHelperText>Selecciona la cantidad de Baños</FormHelperText>
+      </FormControl>
+      
+      <Box display="flex" alignItems="center" justifyContent="space-between">
+          <Box>
+            <Box component="span" fontSize="subtitle1.fontSize">
+              ¿Desea Estacionamiento?
+            </Box>
+          </Box>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={estacionamiento}
+                onChange={(e) => setEstacionamiento(e.target.checked)}
+                name="estacionamiento"
+              />
+            }
+            label={estacionamiento ? 'Sí' : 'No'}
           />
-              <Button type="submit" variant="contained" color="primary">
-                Guardar
-              </Button>
-            </form>
-        </div>  
-    </div>
-   </Box>
- )
-}
-export default ViviendaForm;
+      </Box>
+      <Box display="contents" alignItems="center" justifyContent="space-between">
+          <Box>
+            <Box component="span" fontSize="subtitle1.fontSize">
+              Presupuesto
+            </Box>
+          </Box>
+          <Box>
+            <Slider
+              value={presupuesto}
+              onChange={(e, newValue) => setPresupuesto(newValue)}
+              valueLabelDisplay="auto"
+              step={100}
+              min={700}
+              max={5000}
+            />
+          </Box>
+        </Box>
+      <Button variant="contained" color="primary" type="submit">
+        Guardar
+      </Button>
+    </form>
+    </Container>
+    </Box>
+  );
+};
+
+export default Formulario;
